@@ -1481,7 +1481,7 @@ GameObject:
   - component: {fileID: 6854758633167415004}
   - component: {fileID: 484389841101866218}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: GENERATOR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

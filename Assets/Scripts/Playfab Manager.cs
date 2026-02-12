@@ -50,11 +50,11 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
 
     public void CreateAccount()
     {
-        Debug.Log("Create Account");
+        PanelManager.Instance.Load(Panel.SUBSCRIBE);
     }
     
     public void FailLogin(PlayFabError playFabError)
     {
-        Debug.Log(playFabError.GenerateErrorReport());
+        PanelManager.Instance.Load(Panel.ERROR, playFabError.GenerateErrorReport());
     }
 }
