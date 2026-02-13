@@ -13,7 +13,6 @@ public class PanelManager : MonoBehaviour
 {
     private Dictionary<Panel, GameObject> dict = new Dictionary<Panel, GameObject>();
     [SerializeField] GameObject clone = null;
-    [SerializeField] Text errorMessage;
     private static PanelManager instance;
     public static PanelManager Instance
     {
@@ -54,6 +53,6 @@ public class PanelManager : MonoBehaviour
         }
 
         if (panel == Panel.ERROR && message != null)
-            Debug.Log(message);
+            clone.GetComponent<ErrorPanel>().SetText(message);
     }
 }

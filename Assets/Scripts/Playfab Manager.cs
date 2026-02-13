@@ -4,6 +4,10 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem.Switch;
+using UnityEditor.Experimental.GraphView;
+using UnityEditorInternal;
+using PlayFab.MultiplayerModels;
 public class PlayfabManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] InputField addressInputField;
@@ -55,6 +59,24 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     
     public void FailLogin(PlayFabError playFabError)
     {
-        PanelManager.Instance.Load(Panel.ERROR, playFabError.GenerateErrorReport());
+        string errorMessage = null;
+        var lines = playFabError.GenerateErrorReport().Split('\n');
+
+        switch (lines.Length)
+        {
+            case 1:
+                errorMessage = lines[0];
+                break;
+            case 2:
+                errorMessage = lines[1];
+                break;
+            case >= 3:
+                for (int i = 2; i < lines.Length; i++)
+                    errorMessage += lines[i] + '\n';
+                break;
+            default:
+                break;
+        }
+        PanelManager.Instance.Load(Panel.ERROR, errorMessage);
     }
 }
