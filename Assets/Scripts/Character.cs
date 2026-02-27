@@ -5,14 +5,13 @@ public class Character : MonoBehaviourPun
     [SerializeField] float speed;
     [SerializeField] Vector3 direction;
     [SerializeField] Rotation rotation;
-    [SerializeField] Head head;
     private void Awake()
     {
         rotation = GetComponent<Rotation>();
-        head = GetComponent<Head>();
     }
     private void Start()
     {
+        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         DisableCamera();
     }
     void Update()
@@ -22,7 +21,6 @@ public class Character : MonoBehaviourPun
             Control();
             Move();
             rotation.RotateY();
-            head.RotateX();
         }
     }
 

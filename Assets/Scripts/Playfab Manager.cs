@@ -4,10 +4,6 @@ using PlayFab;
 using PlayFab.ClientModels;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.InputSystem.Switch;
-using UnityEditor.Experimental.GraphView;
-using UnityEditorInternal;
-using PlayFab.MultiplayerModels;
 public class PlayfabManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] InputField addressInputField;
@@ -15,11 +11,16 @@ public class PlayfabManager : MonoBehaviourPunCallbacks
     [SerializeField] string gameVersion;
     public void SuccessLogin(LoginResult loginResult)
     {
+        PlayFabClientAPI.GetAccountInfo(new GetAccountInfoRequest(), SuccessLogin, FailLogin);
         PhotonNetwork.AutomaticallySyncScene = false;
         PhotonNetwork.GameVersion = gameVersion;
         StartCoroutine(ConnectRoutine());
     }
 
+    public void SuccessLogin(GetAccountInfoResult getAccountInfoResult)
+    {
+        PhotonNetwork.LocalPlayer.NickName = getAccountInfoResult.AccountInfo?.Username;
+    }
     public override void OnJoinedLobby()
     {
         PhotonNetwork.LoadLevel("Lobby");

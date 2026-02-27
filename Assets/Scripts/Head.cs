@@ -1,14 +1,21 @@
 using UnityEngine;
 using Photon.Pun;
-public class Head : MonoBehaviourPun
+public class Head : MonoBehaviourPunCallbacks
 {
-    [SerializeField] float axis;
-    [SerializeField] float speed;
+    [SerializeField] Rotation rotation;
+    [SerializeField] float minAngle = -55f;
+    [SerializeField] float maxAngle = 55f;
 
-    public void RotateX()
+    public void Awake()
     {
-        axis -= Input.GetAxisRaw("Mouse Y") * speed * Time.deltaTime;
-        axis = Mathf.Clamp(axis, -55f, 55f);
-        transform.localEulerAngles = new Vector3(axis, 0, 0);
+        rotation = GetComponent<Rotation>();
+    }
+
+    private void Update()
+    {
+        if(photonView.IsMine)
+        {
+            rotation.RotateX(minAngle, maxAngle);
+        }
     }
 }
