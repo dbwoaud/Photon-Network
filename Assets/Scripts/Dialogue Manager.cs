@@ -13,6 +13,8 @@ public class DialogueManager : MonoBehaviourPunCallbacks
     {
         GameObject chat = Instantiate(Resources.Load<GameObject>("Talk"), parentTransform);
         chat.GetComponent<Text>().text = message;
+        Canvas.ForceUpdateCanvases();
+        scrollRect.verticalNormalizedPosition = 0.0f;
     }
     void Update()
     {
@@ -29,7 +31,4 @@ public class DialogueManager : MonoBehaviourPunCallbacks
             inputField.ActivateInputField();
         }
     }
-
-
-    
 }

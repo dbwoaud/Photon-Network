@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 public class Character : MonoBehaviourPun
 {
@@ -11,16 +12,25 @@ public class Character : MonoBehaviourPun
     }
     private void Start()
     {
-        Debug.Log(PhotonNetwork.LocalPlayer.NickName);
         DisableCamera();
     }
     void Update()
     {
         if(photonView.IsMine)
         {
+            Pause();
             Control();
             Move();
             rotation.RotateY();
+        }
+    }
+
+    private void Pause()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            PanelManager.Instance.Load(Panel.PAUSE);
+            MouseManager.Instance.SetMouse(true);
         }
     }
 
@@ -37,6 +47,7 @@ public class Character : MonoBehaviourPun
             eye.gameObject.SetActive(false);
         }
     }
+
     public void Control()
     {
         direction.x = Input.GetAxisRaw("Horizontal");

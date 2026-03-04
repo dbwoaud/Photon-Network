@@ -34,23 +34,19 @@ public class PanelManager : MonoBehaviour
     {
         if(instance != null)
             Destroy(gameObject);
-
+        DontDestroyOnLoad(gameObject);
     }
 
     public void Load(Panel panel, string message = null)
     {
-        if (!dict.TryGetValue(panel, out clone))
+        if (!dict.TryGetValue(panel, out clone) || clone == null)
         {
             clone = (GameObject)Instantiate(Resources.Load(panel.ToString()));
             clone.name = clone.name.Replace("(Clone)", "");
-            dict.Add(panel, clone);
-            DontDestroyOnLoad(clone);
-        }
-        else
-        {
             clone = dict[panel];
-            clone.SetActive(true);
         }
+
+        clone.SetActive(true);
 
         if (panel == Panel.ERROR && message != null)
             clone.GetComponent<ErrorPanel>().SetText(message);

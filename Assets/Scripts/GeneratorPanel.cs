@@ -6,6 +6,7 @@ using Photon.Realtime;
 public class GeneratorPanel : MonoBehaviourPunCallbacks
 {
     [SerializeField] InputField inputField;
+    [SerializeField] Button creatRoomButton;
     [SerializeField] Toggle[] toggles;
     [SerializeField] int perssonal = 0;
 
@@ -13,11 +14,25 @@ public class GeneratorPanel : MonoBehaviourPunCallbacks
     {
         toggles = GetComponentsInChildren<Toggle>();
     }
-    void Start()
+
+    private void Start()
     {
-        Select(true);
+        OnRoomNameChanged();
     }
 
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        inputField.text = "";
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            if (i == 0)
+                toggles[i].isOn = true;
+            else
+                toggles[i].isOn = false;
+        }
+        Select(true);
+    }
     public void Select(bool state)
     {
         if(!state)
@@ -32,14 +47,21 @@ public class GeneratorPanel : MonoBehaviourPunCallbacks
             }          
         }
     }
-
     public void CreateRoom()
     {
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = perssonal;
         roomOptions.IsOpen = true;
         roomOptions.IsVisible = true;
-        PhotonNetwork.CreateRoom(inputField.text, roomOptions);
+        if (inputField.text != "")
+            PhotonNetwork.CreateRoom(inputField.text, roomOptions);
+        else
+            PhotonNetwork.CreateRoom("Basic", roomOptions);
         gameObject.SetActive(false);
+    }
+
+    public void OnRoomNameChanged()
+    {
+        creatRoomButton.interactable = !string.IsNullOrWhiteSpace(inputField.text);
     }
 }
