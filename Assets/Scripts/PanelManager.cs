@@ -37,18 +37,19 @@ public class PanelManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void Load(Panel panel, string message = null)
+public void Load(Panel panel, string message = null)
+{
+    if (!dict.TryGetValue(panel, out clone) || clone == null)
     {
-        if (!dict.TryGetValue(panel, out clone) || clone == null)
-        {
-            clone = (GameObject)Instantiate(Resources.Load(panel.ToString()));
-            clone.name = clone.name.Replace("(Clone)", "");
-            clone = dict[panel];
-        }
-
-        clone.SetActive(true);
-
-        if (panel == Panel.ERROR && message != null)
-            clone.GetComponent<ErrorPanel>().SetText(message);
+        GameObject prefab = Resources.Load<GameObject>(panel.ToString());
+        clone = Instantiate(prefab);
+        clone.name = panel.ToString();
+        dict[panel] = clone;  
     }
+
+    clone.SetActive(true);
+
+    if (panel == Panel.ERROR && message != null)
+        clone.GetComponent<ErrorPanel>().SetText(message);
+}
 }
