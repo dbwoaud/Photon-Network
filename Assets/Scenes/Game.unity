@@ -2731,6 +2731,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2062214420}
     m_Modifications:
+    - target: {fileID: 784053899276101798, guid: e4578a80b5f559d48b2c5798041c3a96, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 784053899276101798, guid: e4578a80b5f559d48b2c5798041c3a96, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1493988734352017856, guid: e4578a80b5f559d48b2c5798041c3a96, type: 3}
       propertyPath: m_Name
       value: Terrain
