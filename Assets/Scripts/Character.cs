@@ -6,22 +6,30 @@ public class Character : MonoBehaviourPun
     [SerializeField] float speed;
     [SerializeField] Vector3 direction;
     [SerializeField] Rotation rotation;
+    [SerializeField] Rigidbody rigidbody;
     private void Awake()
     {
         rotation = GetComponent<Rotation>();
+        rigidbody = GetComponent<Rigidbody>();
     }
     private void Start()
     {
         DisableCamera();
     }
+
+    private void FixedUpdate()
+    {
+        if(photonView.IsMine)
+            Move();
+    }
+
     void Update()
     {
         if(photonView.IsMine)
         {
             Pause();
-            Control();
-            Move();
-            rotation.RotateY();
+            Control();;
+            rotation.RotateY(rigidbody);
         }
     }
 
@@ -57,7 +65,7 @@ public class Character : MonoBehaviourPun
 
     public void Move()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        rigidbody.MovePosition(rigidbody.position + rigidbody.transform.TransformDirection(direction) * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

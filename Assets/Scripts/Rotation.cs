@@ -13,9 +13,9 @@ public class Rotation : MonoBehaviourPun
         axis = Mathf.Clamp(axis, minAngle, maxAngle);
         transform.localEulerAngles = new Vector3(-axis, 0, 0);
     }
-    public void RotateY()
+    public void RotateY(Rigidbody rigidbody)
     {
         axis += Input.GetAxisRaw("Mouse X") * speed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, axis, 0);
+        rigidbody.transform.eulerAngles = new Vector3(0, axis, 0);
     }
 }
