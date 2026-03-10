@@ -856,6 +856,7 @@ GameObject:
   - component: {fileID: 2107295496090696804}
   - component: {fileID: 1692227814263186866}
   - component: {fileID: 2848902020715033577}
+  - component: {fileID: 2384092032567292908}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -911,7 +912,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6717718605154989953}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 116159b39f9cb84459e7bbf58a69ecd0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1023,6 +1024,20 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &2384092032567292908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717718605154989953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d6814c2954cab84cad2b42ff6d7e7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigidbody: {fileID: 1692227814263186866}
+  force: 5
 --- !u!1 &9040841392642129050
 GameObject:
   m_ObjectHideFlags: 0
