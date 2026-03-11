@@ -36,12 +36,6 @@ public class SubscribePanel : MonoBehaviourPunCallbacks
 
     public void Fail(PlayFabError playFabError)
     {
-        string errorMessage = null;
-        var lines = playFabError.GenerateErrorReport().Split('\n');
-
-        for (int i = 2; i < lines.Length; i++)
-            errorMessage += lines[i] + '\n';
-
-        PanelManager.Instance.Load(Panel.ERROR, errorMessage);
+        PanelManager.Instance.Load(Panel.ERROR, playFabError.GenerateErrorReport());
     }
 }

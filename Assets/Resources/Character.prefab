@@ -33,7 +33,7 @@ Transform:
   - {fileID: 7044651164932872250}
   - {fileID: 2781019497285219667}
   m_Father: {fileID: 6447409991869908127}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -4.739026e-13, y: -1.315344e-29, z: 3.1805545e-15}
 --- !u!1 &1264320995219244844
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ Transform:
   m_Children:
   - {fileID: 7531287946108154575}
   m_Father: {fileID: 1899181737000653251}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.5444436e-14, y: -6.361109e-15, z: 1.4124499e-30}
 --- !u!1 &1693014939330548827
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +129,7 @@ Transform:
   m_Children:
   - {fileID: 1899181737000653251}
   m_Father: {fileID: 3667452765735529347}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -2.8624987e-14, y: -6.361109e-15, z: 3.1805545e-15}
 --- !u!1 &3735615112737925063
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ Transform:
   m_Children:
   - {fileID: 6188985451891553526}
   m_Father: {fileID: 3436275844514975269}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.596527e-15, y: -8.478097e-32, z: 2.7012681e-15}
 --- !u!1 &5442455226350624923
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,7 +671,7 @@ Transform:
   m_Children:
   - {fileID: 6447409991869908127}
   m_Father: {fileID: 6188985451891553526}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 1.2722218e-14, y: 1.9083327e-14, z: 2.118675e-30}
 --- !u!1 &6176645627298908469
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,6 +857,7 @@ GameObject:
   - component: {fileID: 1692227814263186866}
   - component: {fileID: 2848902020715033577}
   - component: {fileID: 2384092032567292908}
+  - component: {fileID: 1417531518103321872}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -948,6 +949,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2848902020715033577}
+  - {fileID: 1417531518103321872}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1037,7 +1039,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1692227814263186866}
+  animator: {fileID: 0}
+  distance: 0.2
   force: 5
+--- !u!114 &1417531518103321872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6717718605154989953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: Jump
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1 &9040841392642129050
 GameObject:
   m_ObjectHideFlags: 0
